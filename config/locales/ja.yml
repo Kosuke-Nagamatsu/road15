@@ -220,6 +220,7 @@ ja:
       create_team: 'チーム作成に成功しました！'
       failed_to_save_team: '保存に失敗しました、、'
       update_team: 'チーム更新に成功しました！'
+      cannot_update_team_unless_the_leader: 'リーダーでない限りチームを更新できません、、'
       delete_team: 'チーム削除に成功しました！'
       update_profile: 'プロフィールを編集しました！'
       complete_registration: '登録完了'
