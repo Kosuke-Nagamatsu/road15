@@ -21,7 +21,7 @@ class AssignsController < ApplicationController
        destroy_message = assign_destroy(assign, assign.user)
        redirect_to team_url(params[:team_id]), notice: destroy_message
      else
-       redirect_to team_url(params[:team_id]), notice: 'メンバーを削除できません。'
+       redirect_to team_url(params[:team_id]), notice: I18n.t('views.messages.cannot_delete_member')
      end
   end
 
