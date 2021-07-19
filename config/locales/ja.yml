@@ -223,6 +223,7 @@ ja:
       update_team: 'チーム更新に成功しました！'
       cannot_update_team_unless_the_leader: 'リーダーでない限りチームを更新できません、、'
       delete_team: 'チーム削除に成功しました！'
+      change_leader_authority: 'リーダー権限を変更しました！'
       update_profile: 'プロフィールを編集しました！'
       complete_registration: '登録完了'
       edit_article: '記事を編集する'
@@ -261,6 +262,7 @@ ja:
       delete: '削除'
       create: '作成'
       invite: '招待'
+      vest: '権限移動'
     top:
       line1: 'このアプリケーションは、チームごと、議題ごとに別れて'
       line2: '特定のイシュー（議題）をメンバーで見やすく共有するためのアプリケーションです'

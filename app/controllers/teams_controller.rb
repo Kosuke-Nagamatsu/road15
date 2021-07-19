@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_team, only: %i[show edit update destroy]
+  before_action :set_team, only: %i[show edit update destroy vest]
 
   def index
     @teams = Team.all
@@ -52,8 +52,10 @@ class TeamsController < ApplicationController
   end
 
   def vest
+    @team.update(owner_id: params[:user])
+    redirect_to @team, notice: I18n.t('views.messages.change_leader_authority')
   end
-  
+
   private
 
   def set_team
