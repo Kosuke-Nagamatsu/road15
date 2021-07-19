@@ -1,6 +1,6 @@
 class TeamsController < ApplicationController
   before_action :authenticate_user!
-  before_action :set_team, only: %i[show edit update destroy]
+  before_action :set_team, only: %i[show edit update destroy vest]
 
   def index
     @teams = Team.all
@@ -49,6 +49,16 @@ class TeamsController < ApplicationController
 
   def dashboard
     @team = current_user.keep_team_id ? Team.find(current_user.keep_team_id) : current_user.teams.first
+  end
+
+  def vest
+    user = @team.users.find(params[:user])
+    if @team.update(owner_id: params[:user])
+      TeamMailer.team_mail(user).deliver
+      redirect_to @team, notice: I18n.t('views.messages.change_leader_authority')
+    else
+      render :show
+    end
   end
 
   private
