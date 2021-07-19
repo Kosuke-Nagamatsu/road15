@@ -52,8 +52,13 @@ class TeamsController < ApplicationController
   end
 
   def vest
-    @team.update(owner_id: params[:user])
-    redirect_to @team, notice: I18n.t('views.messages.change_leader_authority')
+    user = @team.users.find(params[:user])
+    if @team.update(owner_id: params[:user])
+      TeamMailer.team_mail(user).deliver
+      redirect_to @team, notice: I18n.t('views.messages.change_leader_authority')
+    else
+      render :show
+    end
   end
 
   private
