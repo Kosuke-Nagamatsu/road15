@@ -22,14 +22,8 @@ class AgendasController < ApplicationController
   end
 
   def destroy
-    user_ids = Assign.all.where(team: @agenda.team).pluck(:user_id)
-    emails = user_ids.map { |user_id| User.all.find(user_id).email }
     if current_user == @agenda.user || current_user == @agenda.team.owner
       @agenda.destroy
-      binding.irb
-      emails.each do |email|
-        AgendaMailer.agenda_mail(email).deliver
-      end
       redirect_to dashboard_url, notice: I18n.t('views.messages.delete_agenda')
     else
       redirect_to team_path(@agenda.team), notice: I18n.t('views.messages.cannot_delete_agenda')
