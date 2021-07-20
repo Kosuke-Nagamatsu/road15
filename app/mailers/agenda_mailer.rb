@@ -8,7 +8,6 @@ class AgendaMailer < ApplicationMailer
     self.agenda_emails(emails).map(&:deliver)
   end
 
-  private
   def self.agenda_emails(emails)
     emails.map { |email| AgendaMailer.agenda_mail(email) }
   end

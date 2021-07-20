@@ -6,6 +6,7 @@ class Agenda < ApplicationRecord
   after_destroy :exec_after_destroy
 
   private
+
   def exec_after_destroy
     self.team.deliver_agenda_destroy_mails
   end
